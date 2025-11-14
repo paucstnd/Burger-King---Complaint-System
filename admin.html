@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login - Burger King Complaint System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* === Original CSS untouched === */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff6600 0%, #ff8c42 50%, #1a1a1a 100%); min-height:100vh; display:flex; justify-content:center; align-items:flex-start; position:relative; overflow-x:hidden; padding:40px 20px; }
+    .bg-element { position:absolute; border-radius:50%; opacity:0.1; }
+    .bg-element-1 { width:300px; height:300px; background-color:white; top:-100px; left:-100px; animation:float 6s ease-in-out infinite; }
+    .bg-element-2 { width:200px; height:200px; background-color:white; bottom:-50px; right:-50px; animation:float 8s ease-in-out infinite reverse; }
+    @keyframes float { 0%,100%{transform:translateY(0px);} 50%{transform:translateY(20px);} }
+    .login-wrapper { position:relative; z-index:1; width:100%; max-width:450px; padding:20px; margin:30px auto 0; }
+    .login-container { background:white; border-radius:16px; padding:50px 40px; box-shadow:0 20px 60px rgba(0,0,0,0.3); animation:slideIn 0.6s ease-out; }
+    @keyframes slideIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    .logo-container { text-align:center; margin-bottom:30px; }
+    .logo-circle { width:80px; height:80px; background:linear-gradient(135deg, #ff6600, #ff8c42); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; box-shadow:0 10px 25px rgba(255,102,0,0.3); animation:pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 10px 25px rgba(255,102,0,0.3);} 50%{box-shadow:0 10px 40px rgba(255,102,0,0.6);} }
+    .logo-text { font-size:28px; font-weight:700; color:white; }
+    .company-name { font-size:24px; font-weight:700; color:#1a1a1a; margin-bottom:8px; }
+    .tagline { font-size:14px; color:#ff6600; font-weight:600; letter-spacing:0.5px; }
+    h2 { font-size:28px; font-weight:700; color:#1a1a1a; text-align:center; margin-bottom:30px; }
+    .form-row { margin-bottom:20px; }
+    label { display:block; font-size:14px; font-weight:600; color:#1a1a1a; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px; }
+    input { width:100%; padding:12px 16px; border:2px solid #f0f0f0; border-radius:8px; font-size:14px; font-family:'Poppins',sans-serif; transition:all 0.3s ease; background-color:#fafafa; }
+    input:focus { outline:none; border-color:#ff6600; background-color:white; box-shadow:0 0 0 4px rgba(255,102,0,0.1); }
+    input::placeholder { color:#ccc; }
+    .remember-forgot { display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; font-size:13px; }
+    .remember { display:flex; align-items:center; gap:6px; }
+    .remember input[type="checkbox"] { width:16px; height:16px; cursor:pointer; accent-color:#ff6600; }
+    .remember label { margin:0; text-transform:none; color:#666; cursor:pointer; font-weight:500; }
+    .forgot-link { color:#ff6600; text-decoration:none; font-weight:600; transition:color 0.3s; }
+    .forgot-link:hover { color:#ff8c42; }
+    .login-btn-container { margin-bottom:20px; }
+    button { width:100%; padding:14px; background:linear-gradient(135deg,#ff6600,#ff8c42); color:white; border:none; border-radius:8px; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.3s ease; text-transform:uppercase; letter-spacing:0.5px; font-family:'Poppins',sans-serif; box-shadow:0 8px 20px rgba(255,102,0,0.3); position:relative; overflow:hidden; }
+    button:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(255,102,0,0.4); }
+    button:active { transform:translateY(0); }
+    .error-message { display:none; background-color:#ffe6e6; color:#c33; padding:12px; border-radius:8px; margin-bottom:20px; font-size:13px; border-left:4px solid #c33; }
+    .success-message { display:none; background-color:#e6ffe6; color:#0a9000; padding:12px; border-radius:8px; margin-bottom:20px; font-size:13px; border-left:4px solid #0a9000; }
+    .footer-text { text-align:center; font-size:13px; color:#999; margin-top:20px; }
+    .home-btn { position:absolute; top:15px; right:15px; padding:8px 16px; background:linear-gradient(135deg,#ff6600,#ff8c42); color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer; z-index:100; font-family:'Poppins',sans-serif; box-shadow:0 4px 15px rgba(255,102,0,0.3); font-size:17px; }
+    .home-btn:hover { transform:translateY(2px); box-shadow:0 8px 25px rgba(255,102,0,0.5); }
+    @media (max-width:600px) { .login-container { padding:30px 25px; } h2 { font-size:22px; } .company-name { font-size:20px; } button { padding:12px; font-size:14px; } }
+  </style>
+</head>
+<body>
+  <button class="home-btn" onclick="window.location.href='intro.html'">Home</button>
+  <div class="bg-element bg-element-1"></div>
+  <div class="bg-element bg-element-2"></div>
+
+  <div class="login-wrapper">
+    <div class="login-container">
+      <div class="logo-container" style="text-align:center; margin-bottom:30px;">
+        <img src="images/2021-burger-king-new-logo-design.png" alt="Burger King Logo" style="max-width:120px; height:auto; margin-bottom:15px;">
+        <div class="tagline">Complaint Management System</div>
+      </div>
+
+      <h2>Manager Login</h2>
+
+      <div class="error-message" id="errorMessage"></div>
+      <div class="success-message" id="successMessage"></div>
+
+      <form id="loginForm">
+        <div class="form-row">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required />
+        </div>
+
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+        </div>
+
+        <div class="remember-forgot">
+          <div class="remember">
+            <input type="checkbox" id="rememberMe" name="rememberMe" />
+            <label for="rememberMe">Remember me</label>
+          </div>
+          <a href="#" class="forgot-link" onclick="handleForgotPassword(event)">Forgot Password?</a>
+        </div>
+
+        <div class="login-btn-container">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+
+      <div class="footer-text">For support, contact your administrator</div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+  (function() {
+    const defaultCredentials = { username: 'admin', password: 'password123' };
+
+    const loginForm = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const rememberMe = document.getElementById('rememberMe');
+
+    window.addEventListener('DOMContentLoaded', init);
+
+    function init() {
+      const savedUsername = localStorage.getItem('savedUsername');
+      const wasRemembered = localStorage.getItem('rememberMe');
+      if (wasRemembered === 'true' && savedUsername) {
+        usernameInput.value = savedUsername;
+        rememberMe.checked = true;
+      }
+
+      if (loginForm) loginForm.addEventListener('submit', onLoginSubmit);
+    }
+
+    function onLoginSubmit(e) {
+      e.preventDefault();
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+      clearMessages();
+
+      if (!username || !password) { 
+        showError('Please enter both username and password'); 
+        return; 
+      }
+
+      // Read from 'adminCredentials' key (what dashboard saves to)
+      const storedProfile = JSON.parse(localStorage.getItem('adminCredentials')) || defaultCredentials;
+
+      if (username === storedProfile.username && password === storedProfile.password) {
+        if (rememberMe.checked) { 
+          localStorage.setItem('savedUsername', username); 
+          localStorage.setItem('rememberMe','true'); 
+        } else { 
+          localStorage.removeItem('savedUsername'); 
+          localStorage.setItem('rememberMe','false'); 
+        }
+        showSuccess('Login successful! Redirecting to dashboard...');
+        loginForm.style.pointerEvents = 'none';
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
+      } else { 
+        showError('Invalid username or password.');
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    }
+
+    function clearMessages() {
+      if (errorMessage) errorMessage.style.display='none';
+      if (successMessage) successMessage.style.display='none';
+    }
+    function showError(message) { 
+      if (!errorMessage) return; 
+      errorMessage.textContent = '✗ ' + message; 
+      errorMessage.style.display = 'block'; 
+    }
+    function showSuccess(message) { 
+      if (!successMessage) return; 
+      successMessage.textContent = message; 
+      successMessage.style.display = 'block'; 
+    }
+
+    window.handleForgotPassword = function(e){ 
+      e && e.preventDefault(); 
+      alert('Password reset is not implemented. For demo use the current credentials.'); 
+    };
+  })();
+</script>
+</body>
+</html>
