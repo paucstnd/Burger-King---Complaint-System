@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burger King Feedback Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    /* General Page Setup */
+
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FF7A00; /* orange background */
+  color: #fff;
+}
+
+/* Header Section */
+header {
+  background-color: #3B0D0D; /* dark brown */
+  padding: 30px 80px;
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+  border-bottom: 6px solid #FF0000; /* red line under header */
+}
+
+/* Logo / Title */
+header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Navigation Menu */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 25px;
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main Section */
+.main {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+/* Burger King Logo */
+.main img {
+  width: 180px;
+  height: 210px;
+  margin-bottom: 70px;
+  border-bottom: 10px solid #FF0000; /* bottom stroke color */
+  border-radius: 20px; /* optional */
+}
+
+
+
+
+/* Center the image and button together */
+.logo-section {
+  display: flex;
+  flex-direction: column; /* stack image and button vertically */
+  align-items: center;    /* center horizontally */
+  justify-content: center;
+}
+
+/* Optional: add spacing between logo and button */
+.logo-section img {
+  width: 180px;
+  height: 210px;
+  margin-bottom: 40px;
+  border-bottom: 10px solid #FF0000;
+  border-radius: 20px;
+}
+
+.manager-profile {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;   /* ← Add space between image and text */
+
+  z-index: 50;
+}
+
+.manager-profile img {
+  margin-left: px;
+  width: 60px;
+  height: 60px;
+  border: 4px solid #3B0D0D;
+  border-radius: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Remove underline on the link */
+.no-underline {
+  text-decoration: none;
+}
+
+.no-underline-label{
+  text-decoration: none;
+  color: rgb(248, 242, 242);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Style the button */
+.no-underline button {
+  background-color: #3B0D0D;
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.no-underline button:hover {
+  background-color: #5a1a1a;
+}
+
+
+
+</style>
+<body>
+
+  <header>
+    <div class="logo-title">
+      <h1>COMPLAINT<br>SYSTEM</h1>
+    </div>
+
+    <nav>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html">CONTACT US</a>
+      
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main class="main">
+  <div class="logo-section">
+    <img src="images/2021-burger-king-new-logo-design.png" alt="Burger King Logo">
+    <a href="customer.html" class="no-underline">
+      <button>GET STARTED</button>
+    </a>
+  </div>
+  
+  
+</main>
+
+<div class="manager-profile">
+  <img src="images/manager.jpeg" alt="manager profile">
+  <a href="admin.html" class="no-underline-label">Manager Login</a>
+</div>
+
+ 
+</body>
+</html>
